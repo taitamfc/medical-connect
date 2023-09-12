@@ -4,7 +4,7 @@
     <form action="" method="post">
         <table class="form-table">
             <tbody>
-                <?= MCPluginHelper::renderInput('name','Name','',true);?>
+                <?= MCPluginHelper::renderInput('name','Name','',['required'=>true]);?>
                 <?= MCPluginHelper::renderInput('position','Position','',['type'=>'number']);?>
             </tbody>
         </table>
