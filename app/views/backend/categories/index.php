@@ -1,5 +1,7 @@
 <div class="wrap">
     <h1 class="wp-heading-inline"><?= mc_lang('Manage Categories');?></h1>
+    <a href="<?= MCAppHelpper::getCurrentUrl(['action' => 'create']);?>" class="page-title-action"><?= mc_lang('Add New');?></a>
+    <?php  include MC_PATH.'app/views/layouts/backend/elements/elm-message.php';  ?>
     <hr class="wp-header-end">
     <ul class="subsubsub">
         <li class="publish">
@@ -46,7 +48,7 @@
                     </th>
                     <td class="title column-title has-row-actions column-primary page-title">
                         <strong>
-                            <a class="row-title" href="admin.php?page=wp2023-orders&order_id=<?= $item['id'];?>" ># <?= $item['id'];?></a>
+                            <a class="row-title" href="<?= MCAppHelpper::getCurrentUrl(['action' => 'edit']);?>&id=<?= $item['id'];?>" ># <?= $item['id'];?></a>
                         </strong>
                     </td>
                     <td><?= $item['name'];?></td>
@@ -54,7 +56,7 @@
                     <td><?= $item['position'];?></td>
                     <td>
                         <a class="button button-small button-primary" href="<?= MCAppHelpper::getCurrentUrl(['action' => 'edit']);?>&id=<?= $item['id'];?>"><?= mc_lang('Edit');?></a>
-                        <a class="button button-small button-secondary" href="<?= MCAppHelpper::getCurrentUrl(['action' => 'destroy']);?>&id=<?= $item['id'];?>"><?= mc_lang('Delete');?></a>
+                        <a class="button button-small button-secondary" onclick=" return confirm('<?= mc_lang('Are you sure ?');?>') " href="<?= MCAppHelpper::getCurrentUrl(['action' => 'destroy']);?>&id=<?= $item['id'];?>"><?= mc_lang('Delete');?></a>
                     </td>
                 </tr>
                 <?php endforeach;?>

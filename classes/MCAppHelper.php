@@ -28,6 +28,7 @@ class MCAppHelpper {
             'controller'    => $controller,
             'action'        => $action,
         ];
+        $urls = array_merge($urls,$params);
         return admin_url('admin.php?page='.MC_PLUGIN_BACKEND_URL).'&'.http_build_query($urls);
     }
 
@@ -45,11 +46,21 @@ class MCAppHelpper {
         if($f_controller){
             $controller = $f_controller;
         }
-        return self::buidUrl($controller,$action);
+        return self::buidUrl($controller,$action,$params);
     }
 
     public static function getInput($name,$default = ''){
         return isset( $_REQUEST[$name] ) && $_REQUEST[$name] !== '' ? $_REQUEST[$name] : $default;
+    }
+    public static function getPostData($request = [],$unsetID = true){
+        $request = array_merge($_POST,$request);
+        unset($request['page']);
+        unset($request['controller']);
+        unset($request['action']);
+        if($unsetID){
+            unset($request['id']);
+        }
+        return $request;
     }
 
 }

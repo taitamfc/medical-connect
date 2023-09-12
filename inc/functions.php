@@ -25,6 +25,11 @@ if( !function_exists('mc_checked') ){
         echo $condition ? 'checked' : '';
     }
 }
+if( !function_exists('mc_confirm') ){
+    function mc_confirm($msg){
+        return 'onclick=" return confirm('.$msg.'); " ';
+    }
+}
 if( !function_exists('mc_lang') ){
     function mc_lang($text){
         return __($text,'medical-connect');
